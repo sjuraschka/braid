@@ -140,7 +140,9 @@
                      [:>.tags
                       {:padding (em 0.5)}
                       (braid.client.ui.styles.pills/tag)
-                      (braid.client.ui.styles.pills/user)]
+                      (braid.client.ui.styles.pills/user)
+                      [:>.add
+                       {:font-size (em 2)}]]
 
                      [:>.close
                       {:position "absolute"
@@ -153,6 +155,21 @@
                        {:font-size (em 2)}
                        (mixins/fontawesome \uf00d)]]]
 
+                    [:>.message.new
+
+                     [:>button.send
+                      {:background  "blue"
+                       :border "none"
+                       :color "white"}
+
+                      [:&::before
+                       {:font-size (em 2)}
+                       (mixins/fontawesome \uf1d8)]
+
+                      [:&:disabled
+                       {:background "#ccc"
+                        :color "#aaa"}]]]
+
                     (braid.client.ui.styles.thread/messages pad)
 
                     [:>.messages
@@ -163,6 +180,7 @@
                      braid.client.ui.styles.message/message
                      [:>.message
                       (braid.client.ui.styles.embed/embed pad)]]
+
 
                     (braid.client.ui.styles.thread/new-message pad)]]]]]]]]]]]
 

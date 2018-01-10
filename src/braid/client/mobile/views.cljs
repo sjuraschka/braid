@@ -11,6 +11,7 @@
     [braid.client.ui.views.sidebar :as sidebar]
     [braid.client.ui.views.thread :refer [messages-view]]
     [cljs.core.async :as a]
+    [clojure.string :as string]
     [re-frame.core :refer [subscribe dispatch]]
     [reagent.core :as r]
     [retouch.core :refer [drawer-view swipe-view]])
@@ -42,7 +43,18 @@
                                                    :content @message}])
 
                           (reset! message ""))
-                        nil))}]]])))
+                        nil))}]]
+       [:button.send {:disabled (string/blank? @message)
+                      :on-click (fn [_]
+                                  (dispatch [:new-message {:group-id @group-id
+                                                           :thread-id (config :thread-id)
+                                                           :mentioned-tag-ids (config :mentioned-tag-ids)
+                                                           :mentioned-user-ids (config :mentioned-user-ids)
+                                                           :content @message}])
+                                  (reset! message ""))}]])))
+
+
+
 
 (defn thread-view [thread]
   (let [open? (subscribe [:thread-open? (thread :id)])

@@ -158,9 +158,9 @@
           (set-results! nil)
           (update-text! (result :message-transform)))
 
-        focus-textbox! (fn []
+        focus-textbox! (fn [])
                          ;TODO
-                         )
+
 
         handle-text-change! (fn [text]
                               (clear-force-close!)
@@ -242,6 +242,7 @@
                           :on-key-down autocomplete-on-key-down
                           :on-change autocomplete-on-change
                           :set-text! set-text!}]
+
           (when (autocomplete-open?)
             [autocomplete-results-view {:results
                                         (@state :results)
@@ -278,4 +279,6 @@
 (defn new-message-view [config]
   [:div.message.new
    [upload-button-view config]
-   [wrap-autocomplete config]])
+   [wrap-autocomplete config]
+   [:button ]])
+

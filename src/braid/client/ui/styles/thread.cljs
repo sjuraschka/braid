@@ -217,29 +217,22 @@
    {:flex-shrink 0
     :padding pad
     :margin 0
-    :position "relative"}
+    :display "flex"
+    :align-items "stretch"}
 
    [:>.plus
     {:border-radius vars/border-radius
-     :text-align "center"
-     :line-height (em 2)
-     :position "absolute"
-     :top 0
-     :bottom 0
-     :left 0
      :width vars/avatar-size
-     :margin pad
      :cursor "pointer"
      :color "#e6e6e6"
-     :box-shadow "0 0 1px 1px #e6e6e6"}
+     :box-shadow "0 0 1px 1px #e6e6e6"
+     :margin-right "1px"
+     :display "flex"
+     :align-items "center"
+     :justify-content "center"}
 
     [:&::after
-     {:position "absolute"
-      :top "50%"
-      :left 0
-      :width "100%"
-      :margin-top (em -1)}
-      (mixins/fontawesome \uf067)]
+     (mixins/fontawesome \uf067)]
 
     [:&:hover
      {:color "#ccc"
@@ -254,6 +247,7 @@
      mixins/spin]]
 
    [:>.autocomplete-wrapper
+    {:flex-grow 2}
 
     [:>textarea
      {:width "100%"
@@ -261,7 +255,7 @@
       :border "none"
       :box-sizing "border-box"
       :min-height (em 3.5)
-      :padding-left (rem 2.5)}
+      :padding-left (rem 1)}
 
      [:&:focus
       {:outline "none"}]]
